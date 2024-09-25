@@ -27,6 +27,7 @@ const Navbar = () => {
             if (res.data.success) {
                 toast.success(res.data.message);
                 // Update Redux state
+                console.log("deleted",res.data);
                 dispatch(setLoggedin(false));
                 dispatch(setLoggedInUser(null));
                 
