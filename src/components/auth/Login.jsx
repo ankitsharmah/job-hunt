@@ -48,17 +48,7 @@ const Login = () => {
                 dispatch(setLoggedInUser(response.data.user));
                 dispatch(setLoggedin(true));
                 localStorage.setItem("user", response.data.user);
-                navigate("/");            }
-            
-            if(respose.data.success){
-                // alert(respose.data.message)
-                console.log("success");
-                toast.success(respose.data.message)
-                dispatch(setLoggedInUser(respose.data.user))
-                dispatch(setLoggedin(true))
-                localStorage.setItem("user", respose.data.user);
-                navigate("/")
-
+                navigate("/");
             }
         } catch (error) {
             // Check for role error in the response

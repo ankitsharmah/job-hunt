@@ -39,7 +39,6 @@ const Navbar = () => {
         // dispatch(resetJobState());
         // dispatch(resetCompanyState());
 
-
         // Navigate to home page after logout
         window.location.reload(); // Reloads the current page
         navigate("/");
@@ -49,27 +48,6 @@ const Navbar = () => {
     } catch (error) {
       console.error(error);
       toast.error("An error occurred during logout.");
-
-    async function logOut() {
-        try {
-            const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
-            if (res.data.success) {
-                toast.success(res.data.message);
-                // Update Redux state
-                console.log("deleted",res.data);
-                dispatch(setLoggedin(false));
-                dispatch(setLoggedInUser(null));
-                
-                // Navigate to home page after logout
-                navigate('/');
-            } else {
-                toast.error("Logout failed");
-            }
-        } catch (error) {
-            console.error(error);
-            toast.error("An error occurred during logout.");
-        }
-
     }
   }
 
@@ -203,5 +181,5 @@ const Navbar = () => {
     </div>
   );
 };
-}
-export default Navbar
+
+export default Navbar;
