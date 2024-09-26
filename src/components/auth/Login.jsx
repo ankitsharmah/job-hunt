@@ -40,6 +40,7 @@ const Login = () => {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true,
+<<<<<<< HEAD
             });
     
             // console.log(response.data);
@@ -49,6 +50,18 @@ const Login = () => {
                 dispatch(setLoggedin(true));
                 localStorage.setItem("user", response.data.user);
                 navigate("/");
+=======
+            })
+            
+            if(respose.data.success){
+                // alert(respose.data.message)
+                console.log("success");
+                toast.success(respose.data.message)
+                dispatch(setLoggedInUser(respose.data.user))
+                dispatch(setLoggedin(true))
+                localStorage.setItem("user", respose.data.user);
+                navigate("/")
+>>>>>>> 628bc3c41859c513f3d444768b5d345f5cab70a7
             }
         } catch (error) {
             // Check for role error in the response
