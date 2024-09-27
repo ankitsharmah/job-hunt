@@ -68,9 +68,12 @@ const JobDescription = () => {
                 <div>Please login first</div>
             ) : (
                 loadingDesc ? (
+                    <div className='h-[88vh]'>
+
                     <Loader />
+                    </div>
                 ) : (
-                    <div className='max-w-7xl mx-auto my-10'>
+                    <div className='max-w-7xl w-[95%] outline p-2 rounded-md outline-[0.2px] outline-gray-200 shadow-md mx-auto my-10'>
                         <div className='flex items-center justify-between'>
                             <div>
                                 <h1 className='font-bold text-xl'>{singleJob?.title}</h1>
@@ -80,6 +83,8 @@ const JobDescription = () => {
                                     <Badge className='text-[#7209b7] font-bold' variant="ghost">{singleJob?.salary}LPA</Badge>
                                 </div>
                             </div>
+                            <div className='hidden md:block'>
+
                             {loadingApply ? (
                                 <Loader /> // Show loader when the apply button is clicked
                             ) : (
@@ -91,8 +96,9 @@ const JobDescription = () => {
                                     {isApplied ? 'Already Applied' : 'Apply Now'}
                                 </Button>
                             )}
+                            </div>
                         </div>
-                        <h1 className='border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h1>
+                        <h1 className='border-b md:border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h1>
                         <div className='my-4'>
                             <h1 className='font-bold my-1'>Role: <span className='pl-4 font-normal text-gray-800'>{singleJob?.title}</span></h1>
                             <h1 className='font-bold my-1'>Location: <span className='pl-4 font-normal text-gray-800'>{singleJob?.location}</span></h1>
@@ -102,7 +108,23 @@ const JobDescription = () => {
                             <h1 className='font-bold my-1'>Total Applicants: <span className='pl-4 font-normal text-gray-800'>{singleJob?.applications?.length}</span></h1>
                             <h1 className='font-bold my-1'>Posted Date: <span className='pl-4 font-normal text-gray-800'>{singleJob?.createdAt.split("T")[0]}</span></h1>
                         </div>
+                        <div className='text-center md:hidden'>
+
+                            {loadingApply ? (
+                                <Loader /> // Show loader when the apply button is clicked
+                            ) : (
+                                <Button
+                                    onClick={isApplied ? null : applyJobHandler}
+                                    disabled={isApplied || loadingApply}
+                                    className={`rounded-lg ${isApplied ? 'bg-gray-600 cursor-not-allowed' : 'bg-[#7209b7] hover:bg-[#5f32ad]'}`}
+                                >
+                                    {isApplied ? 'Already Applied' : 'Apply Now'}
+                                </Button>
+                            )}
+                            </div>
+                   
                     </div>
+
                 )
             )}
         </div>
