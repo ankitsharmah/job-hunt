@@ -40,8 +40,8 @@ const Navbar = () => {
         // dispatch(resetCompanyState());
 
         // Navigate to home page after logout
-        window.location.reload(); // Reloads the current page
         navigate("/");
+        window.location.reload(); // Reloads the current page
       } else {
         toast.error("Logout failed");
       }
